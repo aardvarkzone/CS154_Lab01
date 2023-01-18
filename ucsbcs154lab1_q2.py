@@ -19,9 +19,10 @@ result = pyrtl.Output(bitwidth=1, name='result')
   #with select == 1:
 #    result |= val_b
 
-
 result <<= (val_a & s) | (val_b & s) 
 
 sim = pyrtl.Simulation()
-sim.step_multiple({'a': [0,1,0,1], 'b': [0,0,1,1], 'select': [0,1,0,1]})
+sim.step_multiple({'a': [0,1,0,1], 
+                   'b': [0,0,1,1], 
+                   'select': [0,1,0,1]})
 sim.tracer.render_trace()
