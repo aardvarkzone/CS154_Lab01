@@ -16,11 +16,12 @@ with pyrtl.conditional_assignment:
     with counter == 1: #base case 2: initializes result A + B, loads B_reg
         B_reg.next |= B
         counter.next |= counter + 1
-        result |= A_reg + B
+        result |= A_reg + B_reg
     with pyrtl.otherwise: #"recursive" case: updates regs, result
         A_reg.next |= B_reg
         B_reg.next |= A_reg + B_reg
         result |= A_reg + B_reg
+        #result |= B_reg.next
         counter.next |= counter + 1
 
 sim = pyrtl.Simulation()
