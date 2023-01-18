@@ -8,8 +8,8 @@ import pyrtl
 
 val_a = pyrtl.Input(bitwidth=1, name='a')
 val_b = pyrtl.Input(bitwidth=1, name='b')
-s = pyrtl.Input(bitwidth=1, name='select')
-result = pyrtl.Output(bitwidth=1, name='result')
+s = pyrtl.Input(bitwidth=1, name='s')
+o_wg = pyrtl.Output(bitwidth=1, name='o_wg')
 
 # Important: Assignments inside a "conditional_assignment"
 # are done with "|=" instead of the usual "<<="
@@ -19,10 +19,10 @@ result = pyrtl.Output(bitwidth=1, name='result')
   #with select == 1:
 #    result |= val_b
 
-result |= (val_a & s) | (val_b & s) 
+o_wg <<= (val_a & s) | (val_b & s) 
 
 sim = pyrtl.Simulation()
 sim.step_multiple({'a': [0,1,0,1], 
                    'b': [0,0,1,1], 
-                   'select': [0,1,0,1]})
+                   's': [0,1,0,1]})
 sim.tracer.render_trace()
