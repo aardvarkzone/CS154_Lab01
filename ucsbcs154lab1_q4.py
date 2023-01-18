@@ -56,7 +56,6 @@ def ucsbcs154lab1_alu (a, b, op):
         with op == 2:
             alu_r |= op2_s
             alu_cout |= op2_c
-            
     # < add your code here >
     return alu_r, alu_cout
 
