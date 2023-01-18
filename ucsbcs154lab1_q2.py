@@ -19,7 +19,7 @@ o_wg = pyrtl.Output(bitwidth=1, name='o_wg')
   #with select == 1:
 #    result |= val_b
 
-o_wg <<= (val_a & s) | (val_b & s) 
+o_wg |= (val_a & s) | (val_b & s) 
 
 sim = pyrtl.Simulation()
 sim.step_multiple({'a': [0,1,0,1], 
