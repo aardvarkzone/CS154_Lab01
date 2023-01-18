@@ -43,10 +43,10 @@ with pyrtl.conditional_assignment:
 # Simulate and test your design for 16 cycles using random inputs
 # < add your code here >
 sim = pyrtl.Simulation()
-sim.step_multiple({'a': [0,1,0,1], 
-                   'b': [0,0,1,1], 
-                   'c': [0,0,1,1], 
-                   'd': [0,0,1,1], 
-                   'e': [0,0,1,1], 
-                   's': [0,1,0,1]})
+sim.step_multiple({'a': [0,1,0,0,0,0], 
+                   'b': [0,0,1,0,0,0], 
+                   'c': [0,1,0,0,0,0], 
+                   'd': [0,1,0,0,0,0], 
+                   'e': [0,1,0,0,0,0], 
+                   's': [0,1,0,0,0,0]})
 sim.tracer.render_trace()
