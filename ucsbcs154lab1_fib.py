@@ -16,7 +16,7 @@ with pyrtl.conditional_assignment:
     with counter == 1: #base case 2: initializes result A + B, loads B_reg
         B_reg.next |= B
         counter.next |= counter + 1
-        result |= A_reg + B
+        result |= B
     with pyrtl.otherwise: #"recursive" case: updates regs, result
         A_reg.next |= B_reg
         B_reg.next |= A_reg + B_reg
@@ -27,8 +27,8 @@ with pyrtl.conditional_assignment:
 sim = pyrtl.Simulation()
 for cycle in range(12):
     sim.step({
-        'A':0,
-        'B':1
+        'A':1,
+        'B':2
     })
 sim.tracer.render_trace()
 
